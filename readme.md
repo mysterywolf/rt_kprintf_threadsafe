@@ -1,6 +1,6 @@
 # `rt_kprintf()`函数 线程安全版本
 
-原版RT-Thread `kserver.c `文件中的`rt_kprintf()`函数是线程不安全的，如果同时有两个线程同时使用`rt_kprintf()`打印数据，可能会导致数据被冲刷掉或者一方的信息根本没有打印出来等一系列奇奇怪怪的问题。
+原版RT-Thread `kserver.c `文件中的`rt_kprintf()`函数是线程不安全的，如果同时有两个线程同时使用`rt_kprintf()`打印数据，可能会导致数据被冲刷掉或者一方的信息根本没有打印出来等一系列奇奇怪怪的问题。比如：https://club.rt-thread.org/ask/question/429525.html
 
 RT-Thread官方清楚非线程安全所带来的后果，但是为了确保`rt_kprintf`函数足够精炼有意而为之。
 
