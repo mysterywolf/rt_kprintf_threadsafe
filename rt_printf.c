@@ -10,6 +10,7 @@
 
 #include <rtthread.h>
 #include <rthw.h>
+#include <stdio.h>
 
 #ifdef RT_USING_CONSOLE
 /**
@@ -17,12 +18,12 @@
  *
  * @param fmt the format
  */
-void rt_kprintf(const char *fmt, ...)
+void rt_printf(const char *fmt, ...)
 {
     va_list args;
     rt_size_t length;
     rt_device_t console_dev;
-    static char rt_log_buf[RT_CONSOLEBUF_SIZE];
+    static char rt_console_buf[RT_CONSOLEBUF_SIZE];
 #if defined RT_USING_MUTEX || defined RT_USING_SEMAPHORE
     static unsigned char kprintf_init_flag = RT_FALSE;
 #if defined RT_USING_MUTEX
@@ -60,26 +61,26 @@ void rt_kprintf(const char *fmt, ...)
     /* the return value of vsnprintf is the number of bytes that would be
      * written to buffer had if the size of the buffer been sufficiently
      * large excluding the terminating null byte. If the output string
-     * would be larger than the rt_log_buf, we have to adjust the output
+     * would be larger than the rt_console_buf, we have to adjust the output
      * length. */
-    length = rt_vsnprintf(rt_log_buf, sizeof(rt_log_buf) - 1, fmt, args);
+    length = vsnprintf(rt_console_buf, sizeof(rt_console_buf) - 1, fmt, args);
     if (length > RT_CONSOLEBUF_SIZE - 1)
         length = RT_CONSOLEBUF_SIZE - 1;
 #ifdef RT_USING_DEVICE
     if (console_dev == RT_NULL)
     {
-        rt_hw_console_output(rt_log_buf);
+        rt_hw_console_output(rt_console_buf);
     }
     else
     {
         rt_uint16_t old_flag = console_dev->open_flag;
 
         console_dev->open_flag |= RT_DEVICE_FLAG_STREAM;
-        rt_device_write(console_dev, 0, rt_log_buf, length);
+        rt_device_write(console_dev, 0, rt_console_buf, length);
         console_dev->open_flag = old_flag;
     }
 #else
-    rt_hw_console_output(rt_log_buf);
+    rt_hw_console_output(rt_console_buf);
 #endif /*RT_USING_DEVICE*/
 
     va_end(args);
