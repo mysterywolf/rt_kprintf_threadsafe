@@ -10,7 +10,6 @@
 
 #include <rtthread.h>
 #include <rthw.h>
-#include <stdio.h>
 
 #ifdef RT_USING_CONSOLE
 /**
@@ -63,7 +62,7 @@ void rt_printf(const char *fmt, ...)
      * large excluding the terminating null byte. If the output string
      * would be larger than the rt_console_buf, we have to adjust the output
      * length. */
-    length = vsnprintf(rt_console_buf, sizeof(rt_console_buf) - 1, fmt, args);
+    length = rt_vsnprintf(rt_console_buf, sizeof(rt_console_buf) - 1, fmt, args);
     if (length > RT_CONSOLEBUF_SIZE - 1)
         length = RT_CONSOLEBUF_SIZE - 1;
 #ifdef RT_USING_DEVICE
