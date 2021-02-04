@@ -17,7 +17,7 @@
  *
  * @param fmt the format
  */
-void rt_printf(const char *fmt, ...)
+void rt_kprintf(const char *fmt, ...)
 {
     va_list args;
     rt_size_t length;
