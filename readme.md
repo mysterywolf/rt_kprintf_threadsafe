@@ -31,6 +31,7 @@ RT-Thread online packages
                 Version (latest)  --->
 ```
 
+使用时，无需屏蔽原版rt_kprintf，因为原版rt_kprintf为弱函数，本软件包会自动覆盖原版rt_kprintf
 
 
 ## 维护
