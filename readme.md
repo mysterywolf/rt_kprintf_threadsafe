@@ -18,7 +18,7 @@ RT-Thread官方清楚非线程安全所带来的后果，但是为了确保`rt_k
 
    3) 若RT-Thread连信号量都没有启用，则采用关调度器的方式进行保护。
 
-总之，线程安全版本`rt_kprintf()`函数会和原版函数一样可以在任何环境下调用，不会受到影响，使用时和原版`rt_kprintf`无任何区别，用户无感。
+总之，线程安全版本`rt_kprintf()`函数会和原版函数一样可以在任何环境下调用，不会受到影响，使用时和原版`rt_kprintf`无任何区别，用户无感。**无需屏蔽原版`rt_kprintf`**，因为原版`rt_kprintf`为弱函数，本软件包会自动覆盖原版`rt_kprintf`。
 
 
 
@@ -31,7 +31,7 @@ RT-Thread online packages
                 Version (latest)  --->
 ```
 
-使用时，无需屏蔽原版rt_kprintf，因为原版rt_kprintf为弱函数，本软件包会自动覆盖原版rt_kprintf
+
 
 
 ## 维护
