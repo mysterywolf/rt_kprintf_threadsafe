@@ -12,6 +12,9 @@
 #include <rthw.h>
 
 #ifdef RT_USING_CONSOLE
+
+#undef RT_USING_SEMAPHORE /* never use semaphore */
+
 /**
  * This function will print a formatted string on system console (thread safe)
  *
