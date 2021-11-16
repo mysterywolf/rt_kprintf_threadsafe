@@ -20,7 +20,11 @@
  *
  * @param fmt the format
  */
+#if RT_VER_NUM > 0x40004
+int rt_kprintf(const char *fmt, ...)
+#else
 void rt_kprintf(const char *fmt, ...)
+#endif /* RT_VER_NUM > 0x40004 */
 {
     va_list args;
     rt_size_t length;
@@ -103,5 +107,9 @@ void rt_kprintf(const char *fmt, ...)
         rt_exit_critical();
     #endif /*defined RT_USING_MUTEX || defined RT_USING_SEMAPHORE*/
     }
+
+#if RT_VER_NUM > 0x40004
+    return length; /* the total number of printed characters */
+#endif /* RT_VER_NUM > 0x40004 */
 }
 #endif /*RT_USING_CONSOLE*/
