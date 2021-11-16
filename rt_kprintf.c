@@ -13,7 +13,7 @@
 
 #ifdef RT_USING_CONSOLE
 
-#undef RT_USING_SEMAPHORE /* never use semaphore */
+#undef RT_USING_SEMAPHORE /* never use semaphore protection method */
 
 /**
  * This function will print a formatted string on system console (thread safe)
