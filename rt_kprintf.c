@@ -24,7 +24,7 @@
 int rt_kprintf(const char *fmt, ...)
 #else
 void rt_kprintf(const char *fmt, ...)
-#endif /* RT_VER_NUM > 0x40004 */
+#endif /* RTTHREAD_VERSION >= 40100 */
 {
     va_list args;
     rt_size_t length;
