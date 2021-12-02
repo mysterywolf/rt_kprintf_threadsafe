@@ -20,7 +20,7 @@
  *
  * @param fmt the format
  */
-#if RT_VER_NUM > 0x40004
+#if RTTHREAD_VERSION >= 40100
 int rt_kprintf(const char *fmt, ...)
 #else
 void rt_kprintf(const char *fmt, ...)
