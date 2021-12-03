@@ -20,10 +20,11 @@
  *
  * @param fmt the format
  */
-#if RTTHREAD_VERSION >= 40100
+#if (RTTHREAD_VERSION >= 40100) || (RTTHREAD_VERSION < 40000 && RTTHREAD_VERSION >= 30106)
 int rt_kprintf(const char *fmt, ...)
 #else
 void rt_kprintf(const char *fmt, ...)
+#endif
 #endif /* RTTHREAD_VERSION >= 40100 */
 {
     va_list args;
