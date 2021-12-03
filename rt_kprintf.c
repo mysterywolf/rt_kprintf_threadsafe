@@ -109,8 +109,8 @@ void rt_kprintf(const char *fmt, ...)
     #endif /*defined RT_USING_MUTEX || defined RT_USING_SEMAPHORE*/
     }
 
-#if RT_VER_NUM > 0x40004
+#if (RTTHREAD_VERSION >= 40100) || (RTTHREAD_VERSION < 40000 && RTTHREAD_VERSION >= 30106)
     return length; /* the total number of printed characters */
-#endif /* RT_VER_NUM > 0x40004 */
+#endif
 }
 #endif /*RT_USING_CONSOLE*/
