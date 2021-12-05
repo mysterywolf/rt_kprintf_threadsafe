@@ -11,7 +11,9 @@
 #include <rtthread.h>
 #include <rthw.h>
 
-#ifdef RT_USING_CONSOLE
+#ifndef RT_USING_CONSOLE
+#error "Please enable console"
+#endif
 
 #undef RT_USING_SEMAPHORE /* Don't use semaphore protection method by default because of real-time environment */
 
@@ -112,4 +114,3 @@ void rt_kprintf(const char *fmt, ...)
     return length; /* the total number of printed characters */
 #endif
 }
-#endif /*RT_USING_CONSOLE*/
