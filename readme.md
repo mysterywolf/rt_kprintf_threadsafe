@@ -31,7 +31,7 @@
 ```
 RT-Thread online packages
     system packages --->
-        [*] rt_kprintf: enhanced rt_kprintf packages
+        enhanced kernel services --->
             [*] rt_kprintf_threadsafe: thread-safe version of rt_kprintf --->
                     Version (latest)  --->
 ```
