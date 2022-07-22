@@ -22,7 +22,7 @@
 
 
 ## 适用版本
-- 4.0.4版本以上**无需屏蔽** `kservice.c` 内的 `rt_kprintf`**，因为其弱函数，本软件包会自动覆盖原版`rt_kprintf`。
+- 4.0.4版本以上**无需屏蔽** `kservice.c` 内的 `rt_kprintf`，因为其弱函数，本软件包会自动覆盖原版`rt_kprintf`。
 - 4.0.4以下版本需要手动注释掉 `kservice.c` 内的 `rt_kprintf`函数。
 
 
