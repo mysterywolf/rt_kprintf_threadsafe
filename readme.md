@@ -4,6 +4,8 @@
 
 因此，如果同时有两个线程同时使用`rt_kprintf()`打印数据，可能会导致数据被冲刷掉或者一方的信息根本没有打印出来等一系列奇奇怪怪的问题。比如：https://club.rt-thread.org/ask/question/429525.html
 
+关于newlib下使用自带printf函数的问题可以参考这边帖子的评论区：https://club.rt-thread.org/ask/article/2b0a1d202135b205.html
+
 本安全版本`rt_kprintf()`函数会自动判断当前所处环境：
 
 1. 若RT-Thread尚未启动调度器，则采用没有任何保护的方式；
