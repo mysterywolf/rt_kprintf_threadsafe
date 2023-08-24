@@ -15,8 +15,6 @@
 #error "Please enable console"
 #endif
 
-#undef RT_USING_SEMAPHORE /* Don't use semaphore protection method by default because of real-time environment */
-
 /**
  * This function will print a formatted string on system console (thread safe)
  *
